@@ -1,19 +1,61 @@
-<!DOCTYPE HTML>
-  <head>
-    <title></title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+  <meta charset="UTF-8">
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Area and Circumference</title>
+    
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.purple-deep_purple.min.css">
+    
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
 
-    <!-- MDL Inclusions -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Circle Area & Circumference Calculator</span>
+              </div>
+          </header>
+        <main class="mdl-layout__content">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--4-col mdl-cell--3-offset">
+                    <form action="#" onsubmit="calculateCircle(event)">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="number" id="circle-radius" step="any" required>
+                            <label class="mdl-textfield__label" for="circle-radius">Enter Radius</label>
+                          </div>
+                        <br>
+                        <button
+              class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                            Calculate
+                          </button>
+                      </form>
+                    <div id="circle-result" style="margin-top: 20px;"></div>
+                  </div>
+              </div>
+          </main>
+      </div>
 
-  </head>
+    
+  <script>
+    function calculateCircle(event) {
+      event.preventDefault();
+      const radius = parseFloat(document.getElementById('circle-radius').value);
+      if (radius > 0) {
+        const area = Math.PI * Math.pow(radius, 2);
+        const circumference = 2 * Math.PI * radius;
+        document.getElementById('circle-result').innerHTML = `
+          <p>Area: ${area.toFixed(2)} square units</p>
+          <p>Circumference: ${circumference.toFixed(2)} units</p>
+        `;
+      } else {
+        document.getElementById('circle-result').innerHTML = '<p>Please enter a valid radius.</p>';
+      }
+    }
+  </script>
 
-  <body>
-  
-    <form name="myForm" action="handler.php" method="POST">
-          
-    </form>
-
-  </body>
+</body>
 </html>
